@@ -14,6 +14,7 @@ export default function Home() {
         {categoriaActual?.productos?.map(producto => (
           <Producto key={producto.id} producto={producto} />
         ))}
+        
       </div>
 
     </Layout>
