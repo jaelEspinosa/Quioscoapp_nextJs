@@ -9,7 +9,9 @@ const QuioscoProvider = ({children}) => {
     const [producto, setProducto]=useState({})
     const [modal, setModal] = useState(false)
     const [pedido, setPedido]=useState([])
-    const [paso, setPaso]=useState(1)
+    const [modalDelete, setModalDelete]=useState(false)
+    const [productoABorrar, setProductoABorrar] = useState({})
+    
 
     const obtenerCategorias = async ()=>{
         const {data} =  await axios('/api/categorias')
@@ -36,6 +38,9 @@ const QuioscoProvider = ({children}) => {
     const handleChangeModal = ()=>{
         setModal(!modal)
     }
+    const handleChangeModalDelete = ()=>{
+        setModalDelete(!modalDelete)
+    }
     const handleAgregarPedido = ({categoriaId,...producto})=>{
         if(pedido.some(productoState => productoState.id === producto.id)){
             // actualizar cantidad
@@ -50,6 +55,11 @@ const QuioscoProvider = ({children}) => {
         }
        setModal(false)    
     }
+    const handleDeleteProducto = producto =>{
+          const pedidoActualizado = pedido.filter(item => item.id!== producto.id)
+          setPedido(pedidoActualizado)
+          toast.success('ELIMINADO')
+    }
    
     return (
         <QuioscoContext.Provider value = {{
@@ -62,6 +72,13 @@ const QuioscoProvider = ({children}) => {
             modal,
             handleAgregarPedido,
             pedido,
+            handleDeleteProducto,
+            modalDelete,
+            handleChangeModalDelete,
+            setModalDelete,
+            productoABorrar,
+            setProductoABorrar
+
             
         }}>
 
