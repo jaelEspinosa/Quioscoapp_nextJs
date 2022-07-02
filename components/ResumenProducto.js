@@ -6,7 +6,7 @@ import ModalEliminar from './ModalEliminar'
 import Modal from 'react-modal'
 
 const ResumenProducto = ({ producto }) => {
-  const {modalDelete, handleChangeModalDelete,setProductoABorrar}=useQuiosoco()
+  const {modalDelete, handleChangeModalDelete,setProductoABorrar,handleEditCant}=useQuiosoco()
   const customstyles = {
     content: {
       top: "50%",
@@ -40,7 +40,7 @@ const ResumenProducto = ({ producto }) => {
         <button
           type='button'
           className='bg-blue-500 text-2xl font-black text-white py-2 px-5 rounded-xl uppercase shadow-xl lg:w-auto hover:bg-blue-700'
-           // onClick={()=>handleDeleteProducto(producto)}
+          onClick={()=>handleEditCant(producto.id)}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
@@ -69,6 +69,7 @@ const ResumenProducto = ({ producto }) => {
           <ModalEliminar/>
       </Modal>
     )}
+    
     </>
   )
 }

@@ -6,9 +6,9 @@ const ModalEliminar = () => {
   const { handleDeleteProducto, handleChangeModalDelete, productoABorrar } = useQuiosoco()
   return (
     <>
-    
-      <div className="flex justify-between my-8">
-        <div className='md:w-1/6'>
+       <h1 className="text-center text-6xl text-amber-500 my-12 font-black">¿Lo Eliminamos?</h1>
+      <div className="flex justify-between my-12">
+        <div className='md:w-2/6'>
           <Image
             width={400}
             height={400}
@@ -16,11 +16,11 @@ const ModalEliminar = () => {
             src={`/assets/img/${productoABorrar.imagen}.jpg`}
           />
         </div>
-        <div className='md:w-4/6'>
-          <p className='text-3xl font-bold'>{productoABorrar.nombre}</p>
-          <p className='text-2xl font-bold'>Cantidad: {productoABorrar.cantidad}</p>
-          <p className='text-2xl text-amber-400 font-black'>{formatearDinero(productoABorrar.precio)}</p>
-          <p className='text-2xl font-black'>Total: {formatearDinero(productoABorrar.precio * productoABorrar.cantidad)}</p>
+        <div className='md:w-3/6'>
+          <p className='text-3xl my-4 font-bold'>{productoABorrar.nombre}</p>
+          <p className='text-2xl my-4 font-bold'>Cantidad: {productoABorrar.cantidad}</p>
+          <p className='text-2xl my-4 text-amber-400 font-black'>{formatearDinero(productoABorrar.precio)}</p>
+          <p className='text-2xl my-4 font-black'>Total: {formatearDinero(productoABorrar.precio * productoABorrar.cantidad)}</p>
 
         </div>
       </div>
