@@ -1,12 +1,22 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useQuiosoco from "../hooks/useQuiosco";
 import Layout from "../layout/Layout";
-
+import {useRouter} from 'next/router'
+import { formatearDinero } from "../helpers";
 
 export default function Total (){
-
+    const [total, setTotal]=useState('')
     const {pedido, nombre, setNombre} = useQuiosoco()
-     console.log('el pedido es..',pedido)
+    const router = useRouter()
+
+    let totalPedido = pedido.reduce((acc, item)=> acc + (item.cantidad*item.precio),0) 
+    
+    useEffect(()=>{
+
+      setTotal(totalPedido)
+    },[pedido])
+    
+   
     
      const comprobarPedido = useCallback(()=>{
       return pedido.length === 0
@@ -20,7 +30,7 @@ export default function Total (){
       e.preventDefault()
       console.log('enviando orden..c')
     }
-
+   
     return(
         <Layout pagina = 'Resumen'>
         <h1 className="text-4xl font-black">Total</h1>  
@@ -41,7 +51,7 @@ export default function Total (){
           />
         </div>
         <div className="mt-10">
-          <p className="text-2xl">Total a pagar: {' '}<span className="font-bold">200 €</span></p>
+          <p className="text-2xl">Total a pagar: {' '}<span className="font-bold">{formatearDinero(total)}</span></p>
         </div>
 
         <div>
@@ -54,7 +64,11 @@ export default function Total (){
 
             disabled={comprobarPedido()}
           />
+         
          </div>
+         {pedido.length > 0 && <button onClick={()=>router.push('/resumen')}
+                          className='bg-indigo-600 hover:bg-indigo-800 text-2xl font-bold text-white rounded px-5 py-1 my-5'
+                          >Atrás</button>}
 
         </div>
        </form>

@@ -29,14 +29,14 @@ const ResumenProducto = ({ producto }) => {
           src={`/assets/img/${producto.imagen}.jpg`}
         />
       </div>
-      <div className='md:w-4/6'>
-        <p className='text-3xl font-bold'>{producto.nombre}</p>
-        <p className='text-2xl font-bold'>Cantidad: {producto.cantidad}</p>
-        <p className='text-2xl text-amber-400 font-black'>{formatearDinero(producto.precio)}</p>
-        <p className='text-2xl font-black'>Total: {formatearDinero(producto.precio * producto.cantidad)}</p>
+      <div className=' w 2/6 md:w-4/6'>
+        <p className='my-7 text-m md:text-3xl font-bold'>{producto.nombre}</p>
+        <p className='my-7 text-m md:text-2xl font-bold'>Cantidad: {producto.cantidad}</p>
+        <p className='my-7 text-m md:text-2xl text-amber-400 font-black'>{formatearDinero(producto.precio)}</p>
+        <p className='my-7 text-m md:text-2xl font-black'>Total: {formatearDinero(producto.precio * producto.cantidad)}</p>
 
       </div>
-      <div className='flex flex-col gap-5 align-center'>
+      <div className='flex flex-col gap-10 align-center'>
         <button
           type='button'
           className='bg-blue-500 text-2xl font-black text-white py-2 px-5 rounded-xl uppercase shadow-xl lg:w-auto hover:bg-blue-700'
