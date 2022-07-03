@@ -12,6 +12,8 @@ const QuioscoProvider = ({children}) => {
     const [pedido, setPedido]=useState([])
     const [modalDelete, setModalDelete]=useState(false)
     const [productoABorrar, setProductoABorrar] = useState({})
+    const [nombre, setNombre]=useState('')
+    
     const router = useRouter()
 
     const obtenerCategorias = async ()=>{
@@ -86,7 +88,9 @@ const QuioscoProvider = ({children}) => {
             setModalDelete,
             productoABorrar,
             setProductoABorrar,
-            handleEditCant
+            handleEditCant,
+            nombre,
+            setNombre
 
             
         }}>
