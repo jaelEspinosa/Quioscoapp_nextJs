@@ -5,16 +5,11 @@ import {useRouter} from 'next/router'
 import { formatearDinero } from "../helpers";
 
 export default function Total (){
-    const [total, setTotal]=useState('')
-    const {pedido, nombre, setNombre} = useQuiosoco()
+    
+    const {pedido, nombre, setNombre,colocarOrden, total} = useQuiosoco()
     const router = useRouter()
 
-    let totalPedido = pedido.reduce((acc, item)=> acc + (item.cantidad*item.precio),0) 
     
-    useEffect(()=>{
-
-      setTotal(totalPedido)
-    },[pedido])
     
    
     
@@ -26,10 +21,7 @@ export default function Total (){
       comprobarPedido()
     },[pedido, comprobarPedido])
    
-    const colocarOrden =  e =>{
-      e.preventDefault()
-      console.log('enviando orden..c')
-    }
+ 
    
     return(
         <Layout pagina = 'Resumen'>
