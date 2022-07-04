@@ -58,13 +58,13 @@ export default function Total (){
           />
          
          </div>
-         {pedido.length > 0 && <button onClick={()=>router.push('/resumen')}
-                          className='bg-indigo-600 hover:bg-indigo-800 text-2xl font-bold text-white rounded px-5 py-1 my-5'
-                          >Atrás</button>}
+         
 
         </div>
        </form>
-
+       {pedido.length > 0 && <button onClick={()=>router.push('/resumen')}
+                          className='bg-indigo-600 hover:bg-indigo-800 text-2xl font-bold text-white rounded px-5 py-1 my-5'
+                          >Atrás</button>}
       </Layout>
     )
 
